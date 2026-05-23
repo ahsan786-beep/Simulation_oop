@@ -1,11 +1,11 @@
- using UnityEngine;
+using UnityEngine;
 using Unity.IO;
 using System.IO;
-using UnityEditor.Overlays;
+
 public class MainManager : MonoBehaviour
 {
     public static MainManager instance { get; private set; }
-    public Color teamColor;
+    public Color teamcolor;
     private void Awake()
     {
         if(instance != null)
@@ -26,7 +26,7 @@ public class MainManager : MonoBehaviour
     public void saveColor()
     {
         saveData data = new saveData();
-        data.teamColor = teamColor;
+        data.teamColor = teamcolor;
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
@@ -37,7 +37,7 @@ public class MainManager : MonoBehaviour
         {
             string json =File.ReadAllText(text);
             saveData data =JsonUtility.FromJson<saveData>(json);
-            teamColor = data.teamColor;
+            teamcolor = data.teamColor;
         }
     }
 }
